@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from '@router'
+import VueRouter from '@kkb/krouter/kvue-router'
 import Home from '@/views/Home'
 import About from '@/views/About'
 
