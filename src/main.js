@@ -8,10 +8,11 @@ import router from './kkb/krouter'
 
 Vue.config.productionTip = false
 
+console.log(router)
+
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
   router,  // 挂载的目的是什么？让我们可以在插件中访问到Router实例
-  components: { App },
-  template: '<App/>'
-})
+  
+  render: h => h(App)
+}).$mount('#app')

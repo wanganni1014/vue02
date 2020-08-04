@@ -1,8 +1,6 @@
 // 实现一个插件
 // 返回一个函数，或者返回一个对象。他有一个install（静态）方法，也可以用static声明
 
-import router from "../../router";
-
 // 这里定义一个_Vue,去接受Vue.use()传进来的Vue，而不直接引入一个Vue，是为了避免增大体积，打包增加不必要的依赖
 let _Vue
 
@@ -25,7 +23,7 @@ class VueRouter {
     }
 }
 
-Vue.install = function (Vue) {
+VueRouter.install = function (Vue) {
     // 引用Vue构造函数，在上面 VueRouter中使用
     _Vue = Vue
 
@@ -61,6 +59,8 @@ Vue.install = function (Vue) {
     Vue.component('router-view', {
         render(h) {
             let component = null
+            console.log(this);
+            console.log(this.$router);
             // 早点当前url对应的组件
             const route = this.$router.$options.routes.find(route => route.path === this.$router.current)
             console.log(route);

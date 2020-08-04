@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from '@kkb/krouter/kvue-router'
+import VueRouter from './kvue-router'
 import Home from '@/views/Home'
 import About from '@/views/About'
 
@@ -26,6 +26,8 @@ const routes = [
 ];
 
 // 3.创建一个Router实例
-export default new VueRouter({
+const router = new VueRouter({
   routes
 })
+
+export default router
