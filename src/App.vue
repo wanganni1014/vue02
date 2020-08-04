@@ -5,6 +5,9 @@
     <router-link to="/">首页 | </router-link>
     <router-link to="/about">关于</router-link>
     <br>
+    <p @click="$store.commit('add')">counter: {{$store.state.counter}}</p>
+    <p @click="$store.dispatch('add')">async counter: {{$store.state.counter}}</p>
+    <p>doubleCounter: {{$store.getters.doubleCounter}}</p>
     <br>
     <router-view/>
   </div>
