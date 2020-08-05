@@ -5,8 +5,6 @@ class Store {
     constructor(options) {
         this._mutations = options.mutations
         this._actions = options.actions
-        this._getters = options.getters
-        console.log(this._getters)
 
         // 创建响应式state
         // this.$store.state.counter
@@ -23,19 +21,22 @@ class Store {
         this.commit = this.commit.bind(this)
         this.dispatch = this.dispatch.bind(this)
 
+        // 天王盖地虎
+        this._getters = options.getters
+        console.log(this._getters)
         // getters
         this.getters = {}
         let getterKeys = Object.keys(this._getters)
-        console.log(getterKeys)
         getterKeys.map(fnName => {
-            this.getters[fnName] = this._getters[fnName](options.state)
+            this.getters[fnName] = () => this._getters[fnName](this._vm._data.$$state)
         })
 
         // 数据响应式
         console.log(this.getters)
         getterKeys.map(fnName => {
+            let fn = this._getters[fnName]
             Object.defineProperty(this.getters, fnName, {
-                get: () => this._getters[fnName](options.state),
+                get: () => fn(this._vm._data.$$state),
                 enumerable: true
             })
         })
